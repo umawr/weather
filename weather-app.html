@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="weather-app.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Prata&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather</title>
+  </head>
+  <body>
+    <div class="header">
+      <div class="locationContainer">
+        <input type="text" class="location" placeholder="location..." />
+        <button class="search">Search</button>
+        <input type=" text" class="coordinates" placeholder="coordinates..." />
+      </div>
+      <div class="temperatureContainer">
+        <p class="temperature">
+          <span class="material-symbols-outlined sunnyIcon">sunny</span>
+          &deg;C
+        </p>
+        <p class="date"><span class="day">Thursday</span>, 3:43PM</p>
+      </div>
+    </div>
+    <div class="additional">
+      <p class="precipitationText">
+        <span class="precipitation">4%</span> - Precipitation
+      </p>
+      <p class="humidityText"><span class="humidity"></span> - Humidity</p>
+      <p class="windText"><span class="wind"></span>Km/h - Wind</p>
+    </div>
+    <script src="weather-app.js"></script>
+  </body>
+</html>

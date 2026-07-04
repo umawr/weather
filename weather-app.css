@@ -1,0 +1,74 @@
+* {
+  background-color: black;
+  margin: 0;
+  padding: 0;
+}
+.header {
+  display: flex;
+  flex-direction: row;
+}
+.locationContainer {
+  padding: 1rem 1rem 1rem 1rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.location {
+  font-family: "Prata", serif;
+  color: white;
+  font-size: 3.5rem;
+  border: none;
+}
+.location:focus {
+  outline: none;
+}
+.search{
+  color: white;
+}
+.coordinates {
+  color: white;
+  font-family: "Merriweather", serif;
+  font-size: 1rem;
+  border: none;
+  margin: 1rem 0rem 0rem 0rem;
+}
+.coordinates:focus {
+  outline: none;
+}
+.temperatureContainer {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  color: white;
+  padding: 1rem 1rem 0.5rem 1rem;
+  text-align: right;
+}
+.temperature {
+  font-size: 6rem;
+  font-family: "Prata", serif;
+}
+.sunnyIcon {
+  font-size: 5rem !important;
+  font-variation-settings:
+    "opsz" 48,
+    "FILL" 1;
+  vertical-align: -0.1rem;
+
+}
+.date,
+.day {
+  padding: 0rem 0 0.5rem 0;
+  font-family: "Roboto";
+  font-size: 1rem;
+}
+.additional {
+  color: white;
+  text-align: right;
+  font-family: "Roboto", serif;
+  padding: 0rem 1rem 1rem 1rem;
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+}
