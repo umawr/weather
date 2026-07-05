@@ -16,21 +16,30 @@
 .location {
   font-family: "Prata", serif;
   color: white;
-  font-size: 3.5rem;
+  font-size: 4rem;
   border: none;
 }
 .location:focus {
   outline: none;
+}
+.location::placeholder{
+  color: #303030;
+}
+.stateCountry{
+  color: white;
+  font-family: "Prata", serif;
+  font-size: 2rem;
 }
 .search{
   color: white;
 }
 .coordinates {
   color: white;
-  font-family: "Merriweather", serif;
+  font-family: "Lato", serif;
   font-size: 1rem;
   border: none;
   margin: 1rem 0rem 0rem 0rem;
+  z-index: 10;
 }
 .coordinates:focus {
   outline: none;
@@ -57,18 +66,24 @@
 }
 .date,
 .day {
-  padding: 0rem 0 0.5rem 0;
-  font-family: "Roboto";
+  padding: 0 0 0 0;
+  font-family: "Lato";
   font-size: 1rem;
 }
 .additional {
   color: white;
   text-align: right;
-  font-family: "Roboto", serif;
-  padding: 0rem 1rem 1rem 1rem;
+  font-family: "Lato", serif;
+  padding: 0rem 1rem 0rem 1rem;
+  margin-top: -2rem;
   gap: 1rem;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
   font-size: 0.8rem;
+  position: absolute; 
+  top: 12rem;
+  right: 0.5rem; 
 }
+
+
