@@ -53,18 +53,26 @@ async function fetchCityCoordinates(query) {
       document.querySelector('.coordinates').innerHTML =
         `${data[0].lat}, ${data[0].lon}`;
 
-          const stateCountry = data[0].display_name;
-          console.log(stateCountry);
-      document.querySelector('.stateCountry').innerHTML = `${stateCountry}`
+// Chops the dispaly_name array and displays State and Country
 
+      const locationDetails = data[0].display_name;
+      const parts = locationDetails.split(',').map((part) => part.trim());
+      const stateCountry = parts
+        .filter((part) => {
+          const isNotPin = isNaN(part);
+          return isNotPin;
+        })
+        .slice(-2)
+        .join(', ');
+        console.log(stateCountry);
+      console.log(locationDetails);
+      document.querySelector('.locationDetails').innerHTML = `${stateCountry}`;
     } else {
       console.log('No results found for', query);
     }
   } catch (error) {
     console.error('Error fetching data:', error);
   }
-
-
 }
 locationInput.addEventListener('keydown', (event) => {
   if (event.key === 'Enter') {
@@ -77,3 +85,4 @@ locationInput.addEventListener('keydown', (event) => {
     }
   }
 });
+
