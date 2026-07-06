@@ -22,10 +22,7 @@
 .location:focus {
   outline: none;
 }
-.location::placeholder{
-  color: #303030;
-}
-.stateCountry{
+.locationDetails{
   color: white;
   font-family: "Prata", serif;
   font-size: 2rem;
@@ -86,4 +83,6 @@
   right: 0.5rem; 
 }
 
-
+.location::placeholder{
+  color: #303030;
+}
