@@ -86,3 +86,23 @@
 .location::placeholder{
   color: #303030;
 }
+.dateContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  gap: 6px;            
+}
+
+.date, .day {
+  margin: 0;             
+  padding: 0.5rem 0 0 0;
+  color: white;
+}
+
+.day {
+  font-size: 1.2rem;
+}
+
+.date {
+  font-size: 1rem;
+}
