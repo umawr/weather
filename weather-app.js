@@ -53,8 +53,6 @@ async function fetchCityCoordinates(query) {
       document.querySelector('.coordinates').innerHTML =
         `${data[0].lat}, ${data[0].lon}`;
 
-// Chops the dispaly_name array and displays State and Country
-
       const locationDetails = data[0].display_name;
       const parts = locationDetails.split(',').map((part) => part.trim());
       const stateCountry = parts
@@ -64,7 +62,7 @@ async function fetchCityCoordinates(query) {
         })
         .slice(-2)
         .join(', ');
-        console.log(stateCountry);
+      console.log(stateCountry);
       console.log(locationDetails);
       document.querySelector('.locationDetails').innerHTML = `${stateCountry}`;
     } else {
@@ -83,6 +81,32 @@ locationInput.addEventListener('keydown', (event) => {
     } else {
       alert('Please enter a city name!');
     }
+    const now = new Date();
+    console.log(now)
+    console.log(
+      now.toLocaleDateString('en-US', {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+      }),
+    );
+
+    function getOrdinal(n) {
+      const s = ['th', 'st', 'nd', 'rd'];
+      const v = n % 100;
+      return n + (s[(v - 20) % 10] || s[v] || s[0]);
+    }
+
+    // Extract components
+    const weekday = now.toLocaleDateString('en-US', { weekday: 'long' });
+    const month = now.toLocaleDateString('en-US', { month: 'long' });
+    const day = now.getDate();
+    const year = now.getFullYear();
+
+    // Format and update
+    document.querySelector('.day').innerHTML = `${weekday}`;
+    document.querySelector('.date').innerHTML =
+      `${month} ${getOrdinal(day)}, ${year}`;
   }
 });
-
