@@ -1,108 +1,105 @@
 * {
   background-color: black;
+  color: white;
   margin: 0;
   padding: 0;
+}
+.temperature,
+.locationDetails {
+  font-family: 'Prata';
 }
 .header {
   display: flex;
   flex-direction: row;
 }
 .locationContainer {
-  padding: 1rem 1rem 1rem 1rem;
+  padding: 2.2rem 1rem 1rem 1rem;
   display: flex;
   flex-direction: column;
-  flex: 1;
+  position: relative;
 }
 .location {
-  font-family: "Prata", serif;
-  color: white;
+  font-family: 'Prata', serif;
   font-size: 4rem;
   border: none;
+  width: 100%;
+  min-width: 0;
 }
-.location:focus {
+.location:focus,
+.coordinates:focus {
   outline: none;
 }
-.locationDetails{
-  color: white;
-  font-family: "Prata", serif;
+.locationDetails {
+  font-family: 'Prata', serif;
   font-size: 2rem;
 }
-.search{
-  color: white;
+.location::placeholder {
+  color: #303030;
 }
 .coordinates {
-  color: white;
-  font-family: "Lato", serif;
+  font-family: 'Lato', serif;
   font-size: 1rem;
   border: none;
   margin: 1rem 0rem 0rem 0rem;
-  z-index: 10;
+  display: inline-flex;
 }
-.coordinates:focus {
-  outline: none;
+.locationContainer,
+.temperatureContainer {
+  min-width: 0;
+  flex: 1;
 }
 .temperatureContainer {
   display: flex;
   flex-direction: column;
-  flex: 1;
-  color: white;
   padding: 1rem 1rem 0.5rem 1rem;
   text-align: right;
 }
 .temperature {
   font-size: 6rem;
-  font-family: "Prata", serif;
+  font-family: 'Prata', serif;
 }
 .sunnyIcon {
   font-size: 5rem !important;
   font-variation-settings:
-    "opsz" 48,
-    "FILL" 1;
+    'opsz' 48,
+    'FILL' 1;
   vertical-align: -0.1rem;
-
-}
-.date,
-.day {
-  padding: 0 0 0 0;
-  font-family: "Lato";
-  font-size: 1rem;
 }
 .additional {
-  color: white;
   text-align: right;
-  font-family: "Lato", serif;
+  font-family: 'Lato', serif;
   padding: 0rem 1rem 0rem 1rem;
   margin-top: -2rem;
-  gap: 1rem;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
   font-size: 0.8rem;
-  position: absolute; 
+  position: absolute;
   top: 12rem;
-  right: 0.5rem; 
-}
-
-.location::placeholder{
-  color: #303030;
+  right: 0.5rem;
 }
 .dateContainer {
-  display: flex;
+  display: inline-flex;
   flex-direction: row;
   align-items: baseline;
-  gap: 6px;            
+  gap: 6px;
+  font-family: 'Lato', serif;
+  margin: 0.5rem 0 0 0;
 }
-
-.date, .day {
-  margin: 0;             
-  padding: 0.5rem 0 0 0;
-  color: white;
-}
-
 .day {
   font-size: 1.2rem;
 }
-
 .date {
   font-size: 1rem;
+}
+.timeBox {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  font-family: 'Lato', serif;
+}
+.time {
+  font-size: 1rem;
+  margin-left: 0.5rem;
+  font-family: 'Lato', serif;
 }
