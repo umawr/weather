@@ -14,6 +14,12 @@ const weatherMap = {
 
 let locationInput = document.querySelector('.location');
 
+function getOrdinal(n) {
+  const s = ['th', 'st', 'nd', 'rd'];
+  const v = n % 100;
+  return n + (s[(v - 20) % 10] || s[v] || s[0]);
+}
+
 async function checkWeather(city) {
   const response = await fetch(
     `https://api.openweathermap.org/data/2.5/weather?&units=metric&q=${city}&appid=b0380e75c8ba98bfd79e25ab3e08fa66`,
@@ -21,10 +27,12 @@ async function checkWeather(city) {
   const data = await response.json();
   const locationWeather = data;
 
+  // This calculates the weather.
+
   const condition = data.weather[0].main;
   const iconName = weatherMap[condition] || 'help';
-
   console.log(data);
+
   const precipitation = data.rain?.['1h'] ?? data.snow?.['1h'] ?? '0';
   document.querySelector('.precipitation').innerHTML =
     `${precipitation} Precipitation`;
@@ -34,6 +42,22 @@ async function checkWeather(city) {
   document.querySelector('.humidity').innerHTML =
     `${data.main.humidity}% Humidity`;
   document.querySelector('.wind').innerHTML = `${data.wind.speed} Km/h Wind`;
+
+  // This calculates the time of the location.
+
+  const now = new Date();
+  console.log(now);
+
+  const utcTime = now.getTime() + now.getTimezoneOffset() * 60000;
+  const cityTime = new Date(utcTime + data.timezone * 1000);
+  const timeString = cityTime.toLocaleTimeString('en-US', {
+    hour: 'numeric',
+    minute: 'numeric',
+    hour12: true,
+  });
+
+  document.querySelector('.time').innerHTML = timeString + ' in';
+  console.log(timeString);
 }
 
 async function fetchCityCoordinates(query) {
@@ -44,12 +68,15 @@ async function fetchCityCoordinates(query) {
       'User-Agent': 'MyWeatherApp_ForLearning_ContactEmail@example.com',
     },
   };
+
+  // This essentially removes the pin code from the address and displays only the state and country(or whatever is equivalent to that).
+
   try {
     const response = await fetch(url, options);
     const data = await response.json();
 
     if (data && data.length > 0) {
-      console.table(data[0]);
+      console.log(data[0]);
       document.querySelector('.coordinates').innerHTML =
         `${data[0].lat}, ${data[0].lon}`;
 
@@ -62,9 +89,11 @@ async function fetchCityCoordinates(query) {
         })
         .slice(-2)
         .join(', ');
+
       console.log(stateCountry);
       console.log(locationDetails);
-      document.querySelector('.locationDetails').innerHTML = `${stateCountry}`;
+
+      document.querySelector('.locationDetails').innerHTML = stateCountry;
     } else {
       console.log('No results found for', query);
     }
@@ -72,6 +101,9 @@ async function fetchCityCoordinates(query) {
     console.error('Error fetching data:', error);
   }
 }
+
+// Executes the program after Enter is pressed.
+
 locationInput.addEventListener('keydown', (event) => {
   if (event.key === 'Enter') {
     fetchCityCoordinates(locationInput.value);
@@ -81,8 +113,11 @@ locationInput.addEventListener('keydown', (event) => {
     } else {
       alert('Please enter a city name!');
     }
+
+    // This calculates the date and day.
+
     const now = new Date();
-    console.log(now)
+
     console.log(
       now.toLocaleDateString('en-US', {
         weekday: 'long',
@@ -92,20 +127,12 @@ locationInput.addEventListener('keydown', (event) => {
       }),
     );
 
-    function getOrdinal(n) {
-      const s = ['th', 'st', 'nd', 'rd'];
-      const v = n % 100;
-      return n + (s[(v - 20) % 10] || s[v] || s[0]);
-    }
-
-    // Extract components
     const weekday = now.toLocaleDateString('en-US', { weekday: 'long' });
     const month = now.toLocaleDateString('en-US', { month: 'long' });
     const day = now.getDate();
     const year = now.getFullYear();
 
-    // Format and update
-    document.querySelector('.day').innerHTML = `${weekday}`;
+    document.querySelector('.day').innerHTML = weekday;
     document.querySelector('.date').innerHTML =
       `${month} ${getOrdinal(day)}, ${year}`;
   }
