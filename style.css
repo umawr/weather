@@ -78,6 +78,19 @@
   top: 12rem;
   right: 0.5rem;
 }
+.feelsLikeLabel,
+.windLabel,
+.humidityLabel,
+.precipitationLabel {
+  color: #f1f1f1;
+}
+.feelsLike,
+.windValue,
+.humidityValue,
+.precipitationValue {
+  font-size: 1rem;
+  color: white;
+}
 .dateContainer {
   display: inline-flex;
   flex-direction: row;
