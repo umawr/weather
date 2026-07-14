@@ -42,7 +42,7 @@ async function checkWeather(city) {
   document.querySelector('.humidity').innerHTML =
     `<span class="humidityValue">${data.main.humidity}%</span> <span class="humidityLabel">Humidity</span>`;
   document.querySelector('.wind').innerHTML =
-    `<span class="windValue">${data.wind.speed}</span> <span class="windLabel">Km/h Wind</span>`;
+    `<span class="windValue">${data.wind.speed}Km/h</span> <span class="windLabel"> Wind</span>`;
   document.querySelector('.feelsLike').innerHTML =
     `<span class="feelsLikeValue">${data.main.feels_like}&deg;C</span> 
    <span class="feelsLikeLabel">Feels Like</span>`;
