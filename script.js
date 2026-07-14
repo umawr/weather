@@ -35,13 +35,17 @@ async function checkWeather(city) {
 
   const precipitation = data.rain?.['1h'] ?? data.snow?.['1h'] ?? '0';
   document.querySelector('.precipitation').innerHTML =
-    `${precipitation} Precipitation`;
+    `<span class="precipitationValue">${precipitation}</span> <span class="precipitationLabel">Precipitation</span>`;
   document.querySelector('.location').innerHTML = data.name;
   document.querySelector('.temperature').innerHTML =
     `<span class="material-symbols-outlined sunnyIcon">${iconName}</span> ${data.main.temp}&deg;C`;
   document.querySelector('.humidity').innerHTML =
-    `${data.main.humidity}% Humidity`;
-  document.querySelector('.wind').innerHTML = `${data.wind.speed} Km/h Wind`;
+    `<span class="humidityValue">${data.main.humidity}%</span> <span class="humidityLabel">Humidity</span>`;
+  document.querySelector('.wind').innerHTML =
+    `<span class="windValue">${data.wind.speed}</span> <span class="windLabel">Km/h Wind</span>`;
+  document.querySelector('.feelsLike').innerHTML =
+    `<span class="feelsLikeValue">${data.main.feels_like}&deg;C</span> 
+   <span class="feelsLikeLabel">Feels Like</span>`;
 
   // This calculates the time of the location.
 
@@ -65,7 +69,7 @@ async function fetchCityCoordinates(query) {
 
   const options = {
     headers: {
-      'User-Agent': 'MyWeatherApp_ForLearning_ContactEmail@example.com',
+      'User-Agent': 'weather',
     },
   };
 
@@ -81,9 +85,9 @@ async function fetchCityCoordinates(query) {
         `${data[0].lat}, ${data[0].lon}`;
 
       const locationDetails = data[0].display_name;
-      const parts = locationDetails.split(',').map((part) => part.trim());
+      const parts = locationDetails.split(',').map(part => part.trim());
       const stateCountry = parts
-        .filter((part) => {
+        .filter(part => {
           const isNotPin = isNaN(part);
           return isNotPin;
         })
@@ -104,7 +108,7 @@ async function fetchCityCoordinates(query) {
 
 // Executes the program after Enter is pressed.
 
-locationInput.addEventListener('keydown', (event) => {
+locationInput.addEventListener('keydown', event => {
   if (event.key === 'Enter') {
     fetchCityCoordinates(locationInput.value);
     const cityName = locationInput.value;
@@ -117,7 +121,6 @@ locationInput.addEventListener('keydown', (event) => {
     // This calculates the date and day.
 
     const now = new Date();
-
     console.log(
       now.toLocaleDateString('en-US', {
         weekday: 'long',
